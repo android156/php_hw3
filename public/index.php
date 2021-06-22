@@ -1,5 +1,6 @@
 <?php
 
+
 use app\models\{Product, User};
 use app\engine\Db;
 use app\engine\Autoload;
@@ -22,7 +23,7 @@ var_dump($product->getOne(2));
 
 var_dump($product);
 
-
+// wtf
 
 
 
