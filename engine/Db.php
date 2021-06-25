@@ -9,8 +9,8 @@ class Db
     protected $config = [
         'driver' => 'mysql',
         'host' => 'localhost:3306',
-        'login' => 'root',
-        'password' => '',
+        'login' => 'test',
+        'password' => '12345',
         'database' => 'shop',
         'charset' => 'utf8'
     ];
@@ -42,7 +42,7 @@ class Db
     }
 
     public function lastInsertId() {
-        //TODO вернуть id
+        return $this->getConnection()->lastInsertId();
     }
 
     //SELECT * FROM `products` WHERE id = :id AND name = :name
@@ -56,7 +56,7 @@ class Db
     public function queryOneObject($sql, $params, $class)
     {
         $stmt = $this->query($sql, $params);
-        $stmt->setFetchMode(\PDO::FETCH_CLASS, $class);
+        $stmt->setFetchMode(\PDO::FETCH_CLASS | \PDO::FETCH_PROPS_LATE, $class);
         return $stmt->fetch();
     }
 
