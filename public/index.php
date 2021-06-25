@@ -10,18 +10,24 @@ include "../engine/Autoload.php";
 spl_autoload_register([new Autoload(), 'loadClass']);
 
 
-$product = new Product("Книга", "Фантастика", 23);
+$product = new Product("book.jpg", "Фантастика", "Супервселенная", 23);
 $product->insert();
-
-$user = new User("User", 234);
-$user->insert();
-
-
-
-var_dump($product->getOne(2));
-
 var_dump($product);
+echo "<br>";
+echo "<hr>";
+$user = new User("User", 234);
+//$user->insert();
 
+
+
+$product = $product->getOne(3);
+var_dump($product);
+echo "<br>";
+echo "<hr>";
+//var_dump($product->getAll());
+//var_dump($product);
+echo $product->id;
+echo $product->name;
 
 
 
